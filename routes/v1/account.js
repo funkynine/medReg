@@ -1,6 +1,7 @@
 import express from 'express';
 import Controller from 'controllers/controller';
-// import { checkToken } from 'utils/utils';
+// eslint-disable-next-line import/named
+import { checkToken } from 'utils/utils';
 import passwordHash from 'password-hash';
 
 const router = express.Router();
@@ -8,7 +9,7 @@ const router = express.Router();
 router.post('/register', (req, res) => {
   const data = req.body;
   Controller.getOne({ email: data.email }, (error, user) => {
-    if (error) res.staus(422).send(error);
+    if (error) res.status(422).send(error);
 
     if (!user) {
       const payload = {
@@ -58,19 +59,19 @@ router.post('/role', (req, res) => {
 //   //
 // });
 
-// router.delete('/remove', (req, res) => {
-//   checkToken(req.headers.jwt)
-//     .subscribe((result) => {
-//       if (result.success) {
-//         Controller.deleteUser({ _id: result.user_id }, (error) => {
-//           if (error) res.status(422).send({ error });
-//           res.status(201).json({ message: 'Success' });
-//         });
-//       } else {
-//         res.status(422).json({ message: result.message });
-//       }
-//     });
-// });
+router.delete('/remove', (req, res) => {
+  checkToken(req.headers.jwt)
+    .subscribe((result) => {
+      if (result.success) {
+        Controller.deleteUser({ _id: result.user_id }, (error) => {
+          if (error) res.status(422).send({ error });
+          res.status(201).json({ message: 'Success' });
+        });
+      } else {
+        res.status(422).json({ message: result.message });
+      }
+    });
+});
 
 router.get('/roles', (req, res) => {
   // TODO

@@ -17,7 +17,9 @@ export default new Schema({
   email: {
     type: String,
     required: true,
+    unique: true,
     validate: [isEmail, 'Is not a valid email'],
+    message: 'User already exists',
   },
   password: {
     type: String,
@@ -27,5 +29,18 @@ export default new Schema({
   token: {
     type: String,
     default: '',
+  },
+  smart_card: {
+    number: {
+      type: Number,
+      default: null,
+    },
+    pin: {
+      type: Number,
+      default: null,
+    },
+  },
+  role: {
+    type: mongoose.Schema.Types.ObjectId, ref: 'Role',
   },
 });
