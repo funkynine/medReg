@@ -1,0 +1,38 @@
+{
+  "root": true,
+  "parserOptions": {
+    "sourceType": "module",
+    "parser": "babel-eslint"
+  },
+  "env": {
+    "browser": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "airbnb-base"
+  ],
+  "rules": {
+    "linebreak-style": ["error", "unix"],
+    "import/extensions": ["error", "always", {
+      "js": "never"
+    }],
+    "no-underscore-dangle":["error", { "allow": ["_id"] }],
+    "no-param-reassign": ["error", { "props": false }]
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "map": [
+            ["app", "./"],
+            ["models", "./models"],
+            ["routes", "./routes"],
+            ["controllers", "./controllers"],
+            ["utils", "./utils"]
+        ]
+      },
+      "node": {
+        "extensions": [".js",".jsx",".vue"]
+      }
+    }
+  }
+}

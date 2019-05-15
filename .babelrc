@@ -1,0 +1,14 @@
+{
+  "plugins": [
+    ["module-resolver", {
+      "root": ["./src"],
+      "alias": {
+        "app": "./",
+        "models": "./models",
+        "routes": "./routes",
+        "controllers": "./controllers",
+        "utils": "./utils",
+      }
+    }]
+  ]
+}
