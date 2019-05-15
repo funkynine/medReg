@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
   res.json({ message: 'This page from API' });
 });
 
-router.use('/v1/account', v1Account);
-router.use('/v1/auth', v1Auth);
+router.use('/account', v1Account);
+router.use('/auth', v1Auth);
 
 export default router;
